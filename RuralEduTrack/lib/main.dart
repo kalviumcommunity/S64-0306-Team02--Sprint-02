@@ -1,42 +1,59 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+void main() {
   runApp(MyApp());
 }
 
-void main() => runApp(CounterApp());
-
-class CounterApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   @override
-  _CounterAppState createState() => _CounterAppState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: WelcomeScreen(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
 }
 
-class _CounterAppState extends State<CounterApp> {
-  int count = 0;
+class WelcomeScreen extends StatefulWidget {
+  @override
+  _WelcomeScreenState createState() => _WelcomeScreenState();
+}
 
-  void increment() {
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  bool isClicked = false;
+
+  void toggleText() {
     setState(() {
-      count++;
+      isClicked = !isClicked;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('Stateful Widget Demo')),
-        body: Center(
-          child: Text(
-            'Count: $count',
-            style: TextStyle(fontSize: 24),
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: increment,
-          child: Icon(Icons.add),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Welcome App'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              isClicked ? 'Welcome Back!' : 'Hello Flutter!',
+              style: TextStyle(fontSize: 24),
+            ),
+            SizedBox(height: 20),
+            Icon(
+              Icons.flutter_dash,
+              size: 100,
+              color: Colors.blue,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: toggleText,
+              child: Text('Click Me'),
+            )
+          ],
         ),
       ),
     );
