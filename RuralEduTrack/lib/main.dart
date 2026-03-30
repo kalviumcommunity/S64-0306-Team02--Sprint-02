@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+ 3.17
 import 'package:firebase_core/firebase_core.dart';
 
 // Import your screens
@@ -28,6 +29,26 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/home': (context) => ResponsiveHome(),
         '/layout': (context) => const ResponsiveLayout(),
+=======
+import 'screens/home_screen.dart';
+import 'screens/second_screen.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
+      initialRoute: '/',
+
+      routes: {
+        '/': (context) => HomeScreen(),
+        '/second': (context) => SecondScreen(),
+main
       },
     );
   }
