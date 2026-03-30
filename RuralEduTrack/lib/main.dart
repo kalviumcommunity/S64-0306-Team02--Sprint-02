@@ -95,3 +95,64 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: WidgetTreeDemo(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class WidgetTreeDemo extends StatefulWidget {
+  @override
+  _WidgetTreeDemoState createState() => _WidgetTreeDemoState();
+}
+
+class _WidgetTreeDemoState extends State<WidgetTreeDemo> {
+  bool isClicked = false;
+
+  void toggleState() {
+    setState(() {
+      isClicked = !isClicked;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Widget Tree Demo'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              isClicked ? 'State Changed!' : 'Initial State',
+              style: TextStyle(fontSize: 24),
+            ),
+            SizedBox(height: 20),
+            Icon(
+              Icons.flutter_dash,
+              size: 100,
+              color: isClicked ? Colors.green : Colors.blue,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: toggleState,
+              child: Text('Toggle State'),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
