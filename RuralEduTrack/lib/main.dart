@@ -67,3 +67,54 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+import 'package:flutter/material.dart';
+import 'screens/home_screen.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
+      theme: ThemeData(
+        primaryColor: Colors.teal,
+
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.teal,
+        ),
+
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.teal,
+          foregroundColor: Colors.white,
+          centerTitle: true,
+        ),
+
+        textTheme: TextTheme(
+          headlineLarge: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+            color: Colors.teal,
+          ),
+          bodyMedium: TextStyle(
+            fontSize: 16,
+            color: Colors.black87,
+          ),
+        ),
+
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.teal,
+            foregroundColor: Colors.white,
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          ),
+        ),
+      ),
+
+      home: HomeScreen(),
+    );
+  }
+}
