@@ -36,3 +36,40 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+import 'package:flutter/material.dart';
+import '../widgets/custom_button.dart';
+import '../widgets/info_card.dart';
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Home Screen')),
+      body: Column(
+        children: [
+
+          InfoCard(
+            title: 'Profile',
+            subtitle: 'View your account',
+            icon: Icons.person,
+          ),
+
+          InfoCard(
+            title: 'Settings',
+            subtitle: 'App preferences',
+            icon: Icons.settings,
+          ),
+
+          SizedBox(height: 20),
+
+          CustomButton(
+            label: 'Go to Details',
+            onPressed: () {
+              Navigator.pushNamed(context, '/details');
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
