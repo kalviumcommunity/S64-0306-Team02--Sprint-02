@@ -135,3 +135,19 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+import 'screens/state_management_demo.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: StateManagementDemo(),
+    );
+  }
+}
